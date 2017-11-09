@@ -1,0 +1,138 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 09-nov-2017, 13:00:01
+    Author     : user
+*/
+*{
+    font-family: sans-serif;
+}
+#GAVETECO{
+    font-size: 16px;
+    font-weight: 100;
+}
+.bajada{
+    font-size: 13px;
+    font-weight: 100;
+}
+body{
+    margin-top: 5px;
+}
+#mainConteiner{
+    display: inline-block;
+    width: 563px;
+    height: 720px;
+    border: 2px black solid;
+    margin-left: 9px;
+    
+}
+#titulo{
+    text-align: center;
+    margin-top: 23px;
+    margin-bottom: 15px;
+    font-weight: bolder;
+    text-decoration: black underline;
+}
+#membrete, #comprobante{
+    display: inline-block;
+    vertical-align: middle;
+/*    border: 1px black solid;*/
+}
+#comprobante{
+    margin-top: 30px;
+    margin-left: 100px;
+    height: 70px;
+    font-size: 17px;
+}
+#nroComp{
+    margin-top: 15px;
+    font-size: 19px;
+}
+#membrete{
+    text-align: center;
+    margin-left: 30px;
+    margin-top: 25px;
+}
+.lineaDatos{
+    margin-top: 17px;
+}
+#lineaDom{
+    margin-top: 15px;
+}
+#lineaFac{
+    margin-top: 15px;
+}
+#lineaConc{
+    margin-top: 18px;
+}
+#lineaIva{
+    margin-top: 21px;
+}
+#lineaImpRet{
+    margin-top: 22px;
+}
+.lineaDatosFinal{
+    margin-top: 84px;
+}
+.lineaDatos label{
+    font-size: 13px;
+    font-weight: bold;
+    margin-left: 25px;
+    
+}
+.lineaDatos span{
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 5px;
+    text-align: center;
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+}
+
+#provSpan{
+    width: 220px;
+}
+#cuitSpan{
+    width: 150px;
+}
+#domSpan{
+    width: 450px;
+}
+#facSpan{
+    width: 270px;
+}
+#fechaSpan{
+    width: 120px;
+}
+#concSpan{
+    width: 230px;
+}
+#netoSpan{
+    width: 280px;
+}
+#ivaSpan{
+    width: 287px;
+}
+#porcSpan{
+    width: 100px;
+}
+#impRetSpan{
+    width: 155px;
+}
+#fechaRetSpan{
+    width: 410px;
+}
+#lineaFirma{
+    margin-top: 152px;
+    margin-left: 280px;
+    border-top: 1px black dotted;
+    text-align: center;
+    width: 240px;
+}
+#firmaLbl{
+    font-size: 12px;
+    width: 200px;
+}

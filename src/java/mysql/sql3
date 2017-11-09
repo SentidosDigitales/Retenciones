@@ -1,0 +1,33 @@
+**** REVISION INTERNA DEL LISTADO RECUPERO ****
+
+---> Verifico que el neto gravado corresponda al iva real
+
+SELECT * FROM remito r WHERE ROUND(r.netog*.21,2)!=r.iva and ROUND(r.netog*.27,2)!=r.iva and ROUND(r.netog*.105,2)!=r.iva AND ROUND(r.netog*.21,2)+.01!=r.iva and ROUND(r.netog*.27,2)+.01!=r.iva and ROUND(r.netog*.105,2)+.01!=r.iva AND periodo='201208';
+SELECT * FROM remito r WHERE ROUND(r.netog*.21,2)!=r.iva and ROUND(r.netog*.27,2)!=r.iva and ROUND(r.netog*.105,2)!=r.iva AND ROUND(r.netog*.21,2)+.01!=r.iva and ROUND(r.netog*.27,2)+.01!=r.iva and ROUND(r.netog*.105,2)+.01!=r.iva AND periodo='201208' ORDER BY Dif DESC;
+
+---> Verifico las retenciones
+
+Select * from (SELECT r.idremito,r.cuit,r.descrip FROM remito r left join rg17 on r.cuit=rg17.cuit where r.retencion='' and (r.iva>160 or r.netog+r.iva>10000) and rg17.idrg17 is null) as norg17 left join rg18 ON norg17.cuit=rg18.cuit where rg18.idrg18 is null;
+
+---> Verifico los repetidos
+
+Select * From remito A Where Exists(Select 1 From remito B Where A.nro = B.nro and A.ptovta=B.ptovta Group By nro, cuit Having Count(1) > 1);
+
+**** REVISION CONTRA IVA COMPRAS ****
+
+---> Selecciono las lineas del recupero junto con la correspondiente del ivacompras. Pueden faltar si hay error en numero de factura o cuit
+
+SELECT * FROM remito as r inner join factura as f on r.cuit=f.cuit and concat(lpad(r.ptovta,4,'0'),'-',lpad(r.nro,8,'0'))=f.numero order by idremito ASC;
+
+---> Solo pido las facturas que no figuran en el iva compras... (carla modifica numeros de fc como telefonica y otros gastos para que no se repitan)
+
+SELECT * FROM remito as r left join factura as f on r.cuit=f.cuit and concat(lpad(r.ptovta,4,'0'),'-',lpad(r.nro,8,'0'))=f.numero  where f.idfactura is null order by idremito ASC ;
+
+---> Pido las facturas que tienen mal el neto gravado o el iva real.
+
+SELECT * FROM remito as r left join factura as f on r.cuit=f.cuit and concat(lpad(r.ptovta,4,'0'),'-',lpad(r.nro,8,'0'))=f.numero  where r.netog<>f.netog OR (r.iva<>f.iva AND r.iva<>f.iva27 and r.iva<>f.importeadic) order by idremito ASC ;
+
+---> Verifico el periodo declarado
+
+SELECT * FROM remito as r left join factura as f on r.cuit=f.cuit and concat(lpad(r.ptovta,4,'0'),'-',lpad(r.nro,8,'0'))=f.numero  where r.fechadec<>f.meslistado order by idremito ASC ;
+
