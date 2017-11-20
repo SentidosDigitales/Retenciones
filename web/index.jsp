@@ -15,21 +15,12 @@
     </head>
     <body>
         <h1>Sistema de emision de Retenciones</h1>
-        <input type="button" value="Emitir">
-        <input type="button" value="Consultar">
-        <input type="button" value="Estadisticas">
-        <input type="button" value="Salir">
-
-        <div>
-            <form action="comprobante.jsp" method="POST">
-                <label>Proveedor:</label><input type="text" name="codProv">
-                <label>Factura Nº:</label><input type="text" name="nroFac">
-                <label>Concepto:</label><input type="text" name="concepto">
-                <input type="submit" value="Preparar"><input type="button" value="Guardar">
-
-            </form>
-
-        </div>     
-
+        <div id="consola">
+            <a href="carga.jsp"><input type="button" value="Emitir"></a>
+            <input type="button" value="Estadisticas">
+            <input type="button" value="Exportar a SICORE">
+            <input type="button" value="Salir">
+        </div>
+        
     </body>
 </html>

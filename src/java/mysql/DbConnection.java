@@ -26,7 +26,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class DbConnection {
 
-    String bd = "recupero";
+    String bd = "retenciones";
     
     String login = "root";
     String password = "";
